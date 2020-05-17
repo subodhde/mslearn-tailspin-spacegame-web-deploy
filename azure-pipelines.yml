@@ -58,4 +58,4 @@ steps:
   displayName: 'Publish Artifact to $(Build.ArtifactStagingDirectory)/$(buildConfiguration)/'
   inputs: 
     pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
-    artifactName: 'drop'
+    artifactName: 'WebApp'
