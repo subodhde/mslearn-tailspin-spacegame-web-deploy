@@ -72,7 +72,7 @@ stages:
 
   - stage: 'Deploy'
     displayName: 'Deploy WebApp'
-      job:
+        job:
         - job: 'Deployment to Azure WebApp'
           displayName: 'Deployment to Azure WebApp'
 
@@ -101,7 +101,7 @@ stages:
                 - task: AzureWebApp@1
                   displayName: 'Deploy to website'
                   inputs:
-                    azureSubscription: '$(azureSubscriptionID)'
+                    azureSubscription: 'tailspin-webapp-subodh'
                     appName: '$(WebAppName)'
                     package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
 
