@@ -93,5 +93,5 @@ stages:
             inputs:
               azureSubscription: 'tailspin-webapp-subodh'
               appName: '$(WebAppName)'
-              package: '$(Pipeline.Workspace)/**/$(buildConfiguration)/*.zip'
+              package: '$(Pipeline.Workspace)/$(buildConfiguration)/*.zip'
 
