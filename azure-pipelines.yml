@@ -69,3 +69,39 @@ stages:
         inputs: 
           pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
           artifactName: 'WebApp'
+
+  - stage: 'Deploy'
+    displayName: 'Deploy WebApp'
+      job:
+        - job: 'Deployment to Azure WebApp'
+          displayName: 'Deployment to Azure WebApp'
+
+
+
+          pool:
+            vmImage: 'ubuntu-16.04'
+            demands:
+              - npm    
+
+          variables: 
+            webbappName: Tailspin-subodh
+
+          environment: dev
+
+          variables:
+          - group: Release
+
+          strategy:
+            runOnce:
+              deploy:
+                steps:
+                - download: current
+                  artifact: WebApp
+
+                - task: AzureWebApp@1
+                  displayName: 'Deploy to website'
+                  inputs:
+                    azureSubscription: '$(azureSubscriptionID)'
+                    appName: '$(WebAppName)'
+                    package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
+
