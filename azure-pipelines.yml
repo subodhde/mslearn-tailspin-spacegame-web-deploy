@@ -65,7 +65,7 @@ stages:
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
-    azureSubscription: 'Resource Manager - Tailspin - Space Game'
+    azureSubscription: ''Visual Studio Enterprise Subscription (13d31264-17e6-4ba7-9ee8-6fdc87d6a4ee)''
     appType: 'webAppLinux'
     WebAppName: 'tailspin-wepapp'
     deployToSlotOrASE: true
