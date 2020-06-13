@@ -90,7 +90,7 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: Website'
             inputs:
-              azureSubscription: tailspin-web-subscription
+              azureSubscription: $(tailspin-web-subscription)
               appName: '$(WebAppName)'
               package: '$(Pipeline.Workspace)/**/*.zip'
 
