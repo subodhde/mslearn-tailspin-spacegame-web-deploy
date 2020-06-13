@@ -87,10 +87,10 @@ stages:
           steps:
           - download: current
             artifact: 'WebApp'
-          - task: AzureWebApp@1
-            displayName: 'Azure App Service Deploy: Website'
+          - task: AzureRmWebAppDeployment@4
             inputs:
-              azureSubscription: $(tailspin-web-subscription)
-              appName: '$(WebAppName)'
-              package: '$(Pipeline.Workspace)/**/*.zip'
-
+              ConnectionType: 'AzureRM'
+              azureSubscription: 'Resource Manager - Tailspin - Space Game'
+              appType: 'webAppLinux'
+              WebAppName: 'tailspin-wepapp'
+              packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
