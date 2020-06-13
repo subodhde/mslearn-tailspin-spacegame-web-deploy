@@ -85,7 +85,9 @@ stages:
       runOnce:
         deploy:
           steps:
-          
+          - download: current
+            artifact: 'WebApp'
+            
           - task: AzureRmWebAppDeployment@4
             inputs:
               ConnectionType: 'AzureRM'
