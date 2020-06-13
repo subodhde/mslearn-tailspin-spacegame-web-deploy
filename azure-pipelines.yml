@@ -50,7 +50,7 @@ stages:
       displayName: 'Build Project - $(buildConfiguration)'
       inputs:
         command: 'build'
-        arguements: '--no-restore --configuration $(buildConfiguration'
+        arguements: '--no-restore --configuration $(buildConfiguration)'
         projects: '**/*.csproj'
 
     - task: DotNetCoreCLI@2
@@ -59,11 +59,11 @@ stages:
         command: 'publish'
         projects: '**/*.csproj'
         publishWebProjects: false
-        arguements: '--no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
+        arguements: '--no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
         zipAfterPublish: true
 
     - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact at location "$(Build.ArtifactStagingDirectory)/$(buildConfiguration)"'
+      displayName: 'Publish Artifact at location "$(Build.ArtifactStagingDirectory)"'
       inputs: 
-        pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)'
         artifactName: 'WebApp'
