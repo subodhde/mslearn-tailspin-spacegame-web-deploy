@@ -65,5 +65,5 @@ stages:
     - task: PublishBuildArtifacts@1
       displayName: 'Publish Artifact at location "$(Build.ArtifactStagingDirectory)/$(buildConfiguration)"'
       inputs: 
-        pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)'
         artifactName: 'WebApp'
