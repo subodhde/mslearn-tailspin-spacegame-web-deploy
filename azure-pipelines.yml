@@ -62,11 +62,13 @@ stages:
         arguements: '--no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
         zipAfterPublish: true
 
-
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
-    azureSubscription: 'Visual Studio Enterprise Subscription(13d31264-17e6-4ba7-9ee8-6fdc87d6a4ee)'
+    azureSubscription: 'Visual Studio Enterprise Subscription(1)(13d31264-17e6-4ba7-9ee8-6fdc87d6a4ee)'
     appType: 'webAppLinux'
     WebAppName: 'tailspin-wepapp'
+    deployToSlotOrASE: true
+    ResourceGroupName: 'ARM-WIN'
+    SlotName: 'production'
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
