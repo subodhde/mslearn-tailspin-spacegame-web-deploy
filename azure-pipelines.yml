@@ -53,7 +53,7 @@ stages:
         arguements: '--no-restore --configuration $(buildConfiguration'
         projects: '**/*.csproj'
 
-    - task: DotNetCLiCore@2
+    - task: DotNetCoreCLI@2
       displayName: 'Publish the Project'
       inputs: 
         command: 'publish'
@@ -62,7 +62,7 @@ stages:
         arguements: '--no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
         zipAfterPublish: true
 
-    - task: PublishBuildArtifact@1
+    - task: PublishBuildArtifacts@1
       displayName: 'Publish Artifact at location "$(Build.ArtifactStagingDirectory)/$(buildConfiguration)"'
       inputs: 
         pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
