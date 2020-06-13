@@ -67,3 +67,29 @@ stages:
       inputs: 
         pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
         artifactName: 'WebApp'
+
+- stage: 'Deployment'
+  displayName: 'Deployment'
+  dependsOn: Build
+  jobs:
+  - deployment: 'SpaceWeb Deployment'
+    displayName: 'SpaceWeb Deployment Job'
+    pool: 
+      vmImage: 'ubuntu-18.04'
+    environment: dev
+    variables:
+    - group: 'Release'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: 'WebApp'
+          - task: AzureWebApp1@1
+            displayName: 'Azure App Service Deploy: Website'
+            inputs:
+              azureSubscription: 'Resource Manager - Tailspin - Space Game'
+              appName: '$(WebAppName)'
+              package: '$(Pipeline.Workspace)/**/$(buildConfiguration)/*.zip'
+
+
