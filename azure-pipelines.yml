@@ -62,8 +62,6 @@ stages:
         arguements: '--no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
         zipAfterPublish: true
 
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact at location "$(Build.ArtifactStagingDirectory)"'
-      inputs: 
-        pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        artifactName: 'WebApp'
+    - publish: '$(Build.ArtifactStagingDirectory)'
+      displayName: 'Publish Artifact'
+      artifact: drop
