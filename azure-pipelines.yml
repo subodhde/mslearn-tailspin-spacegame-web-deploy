@@ -86,16 +86,10 @@ stages:
         deploy:
           steps:
           
-          - task: DownloadPipelineArtifact@2
-            inputs:
-              artifact: WebApp
-              patterns: '**/*.js'
-              path: $(Pipeline.Workspace)
-            
           - task: AzureRmWebAppDeployment@4
             inputs:
               ConnectionType: 'AzureRM'
               azureSubscription: 'Resource Manager - Tailspin - Space Game'
               appType: 'webAppLinux'
               WebAppName: 'tailspin-wepapp'
-              packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
+              packageForLinux: '$(Build.ArtifactStagingDirectory)/$(buildConfiguration)/**/*.zip'
