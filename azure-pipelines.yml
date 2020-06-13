@@ -95,4 +95,4 @@ stages:
               azureSubscription: 'Resource Manager - Tailspin - Space Game'
               appType: 'webAppLinux'
               WebAppName: 'tailspin-wepapp'
-              packageForLinux: '$(Build.ArtifactStagingDirectory)/$(buildConfiguration)/**/*.zip'
+              packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
