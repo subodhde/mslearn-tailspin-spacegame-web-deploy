@@ -72,8 +72,8 @@ stages:
   displayName: 'Deployment'
   dependsOn: Build
   jobs:
-  - deployment: 'SpaceWeb Deployment'
-    displayName: 'SpaceWeb Deployment Job'
+  - deployment: 'SpaceWebDeployment'
+    displayName: 'SpaceWebDeploymentJob'
     pool: 
       vmImage: 'ubuntu-18.04'
     environment: dev
@@ -85,7 +85,7 @@ stages:
           steps:
           - download: current
             artifact: 'WebApp'
-          - task: AzureWebApp1@1
+          - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: Website'
             inputs:
               azureSubscription: 'Resource Manager - Tailspin - Space Game'
