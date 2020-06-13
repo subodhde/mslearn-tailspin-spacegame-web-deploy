@@ -53,7 +53,7 @@ stages:
         arguements: '--no-restore --configuration $(buildConfiguration'
         projects: '**/*.csproj'
 
-    - task: DotNetCLiCore@2
+    - task: DotNetCoreCLI@2
       displayName: 'Publish the Project'
       inputs: 
         command: 'publish'
